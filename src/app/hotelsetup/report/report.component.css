@@ -1,0 +1,19 @@
+.addbutton {
+  height: 40px;
+  background-color: #26c6d0;
+  color: white;
+  margin-top: 10px;
+}
+.Addform {
+  display: flex;
+  margin-top: 10px;
+}
+label {
+  width: 100px;
+}
+input {
+  width: 250px;
+}
+select {
+  width: 250px;
+}

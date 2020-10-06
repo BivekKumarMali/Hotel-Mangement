@@ -1,0 +1,178 @@
+.Addform {
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.Addform label {
+  margin-left: 10%;
+  color: black;
+  font-size: 17px;
+  width: 100px;
+}
+
+.Addform input,
+textarea {
+  width: 30%;
+}
+
+.Addform select {
+  width: 50%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.addbutton {
+  margin-top: 20px;
+  height: 40px;
+  background-color: #26c6d0;
+  color: white;
+}
+
+.newCustomer {
+  background-color: #3a3a62;
+  color: white;
+}
+
+.cancelbutton {
+  margin-top: 20px;
+  height: 40px;
+  background-color: #e8505b;
+  color: white;
+}
+
+textarea {
+  font-size: 15px;
+  font-family: cambria;
+}
+
+.fa-exclamation {
+  color: red;
+}
+
+.color {
+  background-color: #e8505b;
+}
+
+.wizard a {
+  background: #26c6d0;
+  display: inline-block;
+  margin-right: 5px;
+  min-width: 150px;
+  outline: none;
+  padding: 10px 40px 10px;
+  position: relative;
+  text-decoration: none;
+}
+
+.wizard a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tab {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+/* Adds the cut out on the left side of the tab */
+
+/* Squares the start and end of the tab bar */
+
+.wizard a:first-child:before,
+.wizard a:last-child:after {
+  border: none;
+}
+
+/* Rounds the corners */
+
+.wizard a:first-child {
+  -webkit-border-radius: 8px 0 0 0px;
+  -moz-border-radius: 8px 0 0 0px;
+  border-radius: 8px 0 0 0px;
+}
+
+.wizard a:last-child {
+  -webkit-border-radius: 0 8px 0px 0;
+  -moz-border-radius: 0 8px 0px 0;
+  border-radius: 0 8px 0px 0;
+}
+
+.wizard .active {
+  background: #007acc;
+  color: #fff;
+}
+
+/* Adds the right arrow after the tab */
+
+.wizard .active:after {
+  border-left-color: #007acc;
+}
+
+.right {
+  margin-left: 10%;
+  font-size: 15px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+
+.ro:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.Addcustomer {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.Addcustomer label {
+  margin-left: 10%;
+  color: black;
+  font-size: 17px;
+}
+.Addcustomer .short {
+  width: 25%;
+}
+.Addcustomer .medium {
+  width: 30%;
+}
+.ElementForm {
+  height: auto !important;
+}
+.button {
+  height: 40px;
+  background-color: #26c6d0;
+  color: white;
+}
+.newbutton {
+  height: 40px;
+  background-color: #3a3a62;
+  color: white;
+}
+.white {
+  background-color: white;
+  height: auto;
+  margin-top: 15%;
+}
+.search {
+  width: 25% !important;
+  margin-top: 10px;
+}

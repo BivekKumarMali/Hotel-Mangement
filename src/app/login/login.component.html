@@ -1,0 +1,30 @@
+<div class="context">
+  <div class="png">
+    <img src="../../assets/undraw_profile_pic_ic5t.png">
+  </div>
+  <div class="alert alert-warning" role="alert" *ngIf="serverShow">
+    Server Problem Try again later
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="Show">
+    Sorry wrong Email or password
+  </div>
+  <form #f="ngForm">
+    <label for="email">
+      Email
+    </label>
+    <div class="Addform">
+      <input type="text" class="form-control" id="email" name="email" (change)="resetalert()" [(ngModel)]="User"
+        required>
+    </div>
+    <div class="form">
+      <label for="password">
+        Password
+      </label>
+      <input type="password" class="form-control" id="password" name="password" (change)="resetalert()"
+        [(ngModel)]="Password" required>
+    </div>
+    <button type="submit" class="btn addbutton" style="float: right;" (click)="LogIn()">
+      Log In
+    </button>
+  </form>
+</div>

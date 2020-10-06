@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="setup">
+    <h1>Reservation Details</h1>
+    <div id="Addform" style="width: 300px;">
+      <form #form="ngForm" (ngSubmit)="SaveFile()" ngNativeValidate>
+        <div class="Addform ">
+          <label for="roomno">Name :-</label>
+          <input type="text" class="form-control" name="name" placeholder="Enter a Name" id="name" required
+            [(ngModel)]="name">
+        </div>
+        <div class="Addform">
+          <label for="status">No Of Days :-</label>
+          <input id="status" class="form-control" name="status" required [(ngModel)]="nod">
+        </div>
+        <div class="Addform">
+          <label for="type">Price :-</label>
+          <input id="type" class="form-control" name="type" required [(ngModel)]="price">
+
+        </div>
+        <div class="buttonform">
+
+          <button type="submit" class="btn btn-primary float-right" style="margin-top: 10px;">Save</button>
+        </div>
+
+      </form>
+    </div>
+  </div>

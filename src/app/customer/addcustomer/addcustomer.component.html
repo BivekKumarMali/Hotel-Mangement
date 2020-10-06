@@ -1,0 +1,61 @@
+<div class="contanier">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ElementForm">
+                <div class="header title">
+                    <i class="fas fa-edit"> {{pagetitle}} Customer</i>
+                    <div>
+                        <hr>
+                        <form #form="ngForm" (ngSubmit)="saveCustomer()" ngNativeValidate>
+                            <div class="Addform">
+                                <label for="fname">FirstName*</label>
+                                <input type="text" class="form-control short" name="fname" placeholder="First Name" id="fname" required [(ngModel)]="customer.fname">
+                                <label for="lname">LastName*</label>
+                                <input type="text" class="form-control short" name="lname" placeholder="Last Name" id="lname" required [(ngModel)]="customer.lname">
+                            </div>
+                            <div class="Addform">
+                                <label for="Phone">Mobile Number*</label>
+                                <input type="number" class="form-control short" name="mobile" placeholder="Mobile Number" id="mobile" required [(ngModel)]="customer.mobile">
+                                <label for="Phone">Phone Number</label>
+                                <input type="number" class="form-control short" name="Phone" placeholder="Phone Number" id="Phone" [(ngModel)]="customer.phone">
+                            </div>
+                            <div class="Addform col-xs-2">
+                                <label for="bname">Business Name</label>
+                                <input type="text" class="form-control medium" name="bname" placeholder="Buiness Name" id="bname" [(ngModel)]="customer.bname">
+                            </div>
+                            <div class="Addform">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control medium" name="email" placeholder="Email Id" id="email" [(ngModel)]="customer.email">
+                            </div>
+                            <div class="Addform">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control medium" name="country" placeholder="Country" id="country" [(ngModel)]="customer.country">
+                            </div>
+                            <div class="Addform">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control short" name="state" placeholder="State" id="state" [(ngModel)]="customer.state">
+                                <label for="Zip">Zip</label>
+                                <input type="number" class="form-control short" name="zip" placeholder="Zip Code" id="Zip" [(ngModel)]="customer.zip">
+                            </div>
+                            <div class="Addform">
+                               <label for="car">Car Plate No:-</label>
+                                <input type="text" class="form-control short" name="car" placeholder="Car Plate No" id="car" [(ngModel)]="customer.car">
+                            </div>
+                            <div class="Addform">
+                                <label for="address">Address :-</label>
+                                <textarea name="address" id="address" cols="100" rows="2" required [(ngModel)]="customer.address"></textarea>
+                            </div>
+                            <div class="Addform">
+
+                                <button type="submit" class="btn addbutton float-right">{{pagetitle}}</button>
+                                <button type="reset" class="btn cancelbutton" (click)="SaveComplete()">Cancel</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

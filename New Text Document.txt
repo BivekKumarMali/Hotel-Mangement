@@ -1,0 +1,156 @@
+
+  Check(roomno?: number) {
+    const rm = this.rooms.find(x => x.room_no === roomno);
+    for (const reserve of this.reservations) {
+      if (reserve.rid === rm.rid) {
+        let i = new Date(reserve.checkin).getMonth();
+        const j = new Date(reserve.checkout).getMonth();
+        const checkin = new Date(reserve.checkout).getDate();
+        const checkout = new Date(reserve.checkout).getDate();
+        while (i + 1 !== j) {
+          if (this.adc.find(x => x.month === i)) {
+            if (i === j) {
+              if (new Date(reserve.checkin).getMonth() === new Date(reserve.checkout).getMonth()) {
+                const check = this.SetAdcCurrent(-1, checkin, checkout, i);
+                if (check === -1) {
+                  if (confirm('There alreay Exist A booking in this date to this room \n Would you like to continue?')) {
+                    return 0;
+                  }
+                  else {
+                    location.reload();
+                  }
+                }
+              }
+              else {
+                const check = this.SetAdcCurrent(-1, 1, checkout, i);
+                if (check === -1) {
+                  if (confirm('There alreay Exist A booking in this date to this room \n Would you like to continue?')) {
+                    return 0;
+                  }
+                  else {
+                    location.reload();
+                  }
+                }
+              }
+            }
+            else {
+              if (i === new Date(reserve.checkin).getMonth()) {
+                const check = this.SetAdcCurrent(-1, checkin, -1, i);
+              }
+            }
+          }
+          if (i === 12) {
+            i = 1;
+          }
+          else {
+            i += 1;
+          }
+        }
+      }
+    }
+  }
+  SetAdcCurrent(i: number, start: number, end: number, month?: number): void | number {
+    if (i > -1) {
+      for (let j = start - 1; j <= end - 1; j++) {
+        this.adc[i].day[j] = 1;
+      }
+    }
+    else {
+      const adc = this.adc.find(x => x.month === month);
+      if (end > 0) {
+        for (let j = start - 1; j <= end - 1; j++) {
+          if (adc.day[j] === 1) {
+            return -1;
+          }
+        }
+      }
+      else {
+        for (let j = start - 1; j <= adc.day.length - 1; j++) {
+          if (adc.day[j] === 1) {
+            return -1;
+          }
+        }
+      }
+    }
+  }
+
+  SetAdc() {
+    if (this.reservation.checkin && this.reservation.checkout) {
+      const strtdate = new Date(this.reservation.checkin).getDate();
+      const latdate = new Date(this.reservation.checkout).getDate();
+      let start = new Date(this.reservation.checkin).getMonth();
+      const end = new Date(this.reservation.checkout).getMonth();
+      const syear = new Date(this.reservation.checkin).getFullYear();
+      const eyear = new Date(this.reservation.checkout).getFullYear();
+      let i = 0;
+      if (syear === eyear) {
+        if (start === end) {
+          const lastday = new Date(syear, start + 1, 0).getDate();
+          const adc = this.intialize(lastday);
+          this.adc[i] = adc;
+          this.adc[i].month = start;
+          this.SetAdcCurrent(i, strtdate, latdate);
+        }
+        else if (start < end) {
+          while (start !== end) {
+            const lastday = new Date(syear, start + 1, 0).getDate();
+            const adc = this.intialize(lastday);
+            this.adc[i] = adc;
+            this.adc[i].month = start;
+            if (start === new Date(this.reservation.checkin).getMonth()) {
+              this.SetAdcCurrent(i, strtdate, lastday);
+            }
+            else if (end === new Date(this.reservation.checkout).getMonth()) {
+              this.SetAdcCurrent(i, 1, latdate);
+            }
+            else {
+              this.SetAdcCurrent(i, 1, lastday);
+            }
+            i += 1;
+            start += 1;
+          }
+        }
+      }
+      else if (syear < eyear) {
+        while (start <= 12) {
+          const lastday = new Date(syear, start + 1, 0).getDate();
+          const adc = this.intialize(lastday);
+          this.adc[i] = adc;
+          this.adc[i].month = start;
+          if (start === new Date(this.reservation.checkin).getMonth()) {
+            this.SetAdcCurrent(i, strtdate, lastday);
+          }
+          else {
+            this.SetAdcCurrent(i, 1, lastday);
+          }
+          i += 1;
+          start += 1;
+        }
+        let x = 1;
+        while (x <= end) {
+          const lastday = new Date(eyear, x + 1, 0).getDate();
+          const adc = this.intialize(lastday);
+          this.adc[i] = adc;
+          this.adc[i].month = x;
+          if (end === new Date(this.reservation.checkout).getMonth()) {
+            this.SetAdcCurrent(i, 1, latdate);
+          }
+          else {
+            this.SetAdcCurrent(i, 1, lastday);
+          }
+          i += 1;
+          x += 1;
+        }
+      }
+    }
+  }
+  intialize(day): Adc {
+    return {
+      rid: null,
+      room: null,
+      in: new Date(),
+      out: new Date(),
+      day: new Array(day),
+      status: new Array(day)
+    };
+  }

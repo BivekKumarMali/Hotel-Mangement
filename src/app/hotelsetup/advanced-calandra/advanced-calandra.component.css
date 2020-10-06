@@ -1,0 +1,62 @@
+.header i {
+  margin: 5px 5px;
+  color: white;
+  font-size: 20px;
+}
+.header p {
+  font-weight: bolder;
+  color: white;
+}
+.menu {
+  display: flex;
+  margin-right: 10px;
+}
+.set {
+  width: 25px;
+  height: 25px;
+  border: 0.5px solid black;
+  margin-right: 2px;
+}
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+
+.ro:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.ro {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
+}
+
+.addbutton {
+  margin-left: 20px;
+  height: 40px;
+  background-color: #26c6d0;
+  color: white;
+}
+.cancelbutton {
+  margin-left: 20px;
+  height: 40px;
+  background-color: #e8505b;
+  color: white;
+}
+.Editform p {
+  color: black;
+  font-size: 15px;
+  font-weight: 200;
+}
+th {
+  padding: 0;
+  width: 20px;
+}
+h3 {
+  margin-top: 20px;
+  color: black;
+}

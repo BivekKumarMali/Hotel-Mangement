@@ -1,0 +1,134 @@
+* {
+    z-index: 100;
+}
+
+nav {
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    background-color: #3a3a62;
+}
+
+.navup {
+    width: 100%;
+    position: fixed;
+    height: 48px;
+    background-color: #3a3a62;
+    z-index: 100;
+}
+
+.navlinks {
+    margin-top: 50px;
+    display: block;
+    list-style: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    margin: 25px 0 20px 0;
+}
+
+a {
+    color: white;
+    padding-right: 16px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.logs {
+    display: block;
+}
+
+@media screen and (max-width: 1430px) {
+    .logs {
+        display: flex;
+        justify-content: space-between;
+    }
+    .line {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px;
+    }
+    nav {
+        position: fixed;
+        height: 36px;
+        width: 100%;
+    }
+    .hamburger {
+        cursor: pointer;
+        top: 50%;
+        display: block;
+        transform: translate(0%, 20%);
+    }
+    .navlinks {
+        position: fixed;
+        background-color: #3a3a62;
+        height: 100vh;
+        margin-top: 0px;
+        clip-path: circle(100px at 5% -10%);
+        -webkit-clip-path: circle(100px at 5% -15%);
+        transition: all 0.5s ease-out;
+    }
+    .navlinks.open {
+        clip-path: circle(1000px at 5% 0%);
+        -webkit-clip-path: circle(1000px at 5% 0%);
+    }
+    .overlay.open {
+        display: block;
+    }
+    .navup {
+        position: relative;
+        display: flex;
+        height: 30px;
+    }
+    button {
+        position: absolute;
+        right: 5px;
+    }
+}
+
+.float-right {
+    background-color: #3a3a62;
+    border: none;
+    color: #e6e993;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+button:hover {
+    color: #26c6d0;
+}
+
+li {
+    transform: scale(1);
+    transition: all 0.3s ease-in-out 0.2s;
+}
+
+li a:hover {
+    color: #26c6d0;
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out 0.1s;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.logo{
+    font-size: 20px;
+    margin: 10px 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e6e993;
+}

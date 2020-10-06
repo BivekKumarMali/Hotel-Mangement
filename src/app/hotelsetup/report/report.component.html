@@ -1,0 +1,55 @@
+<div class="container" style="margin: 5% auto;">
+  <div class="row">
+    <div class="col-md-12">
+      <form #form="ngForm">
+        <div class="card-body">
+          <h3>Reservation date</h3>
+          <div class="Addform">
+            <div style="margin-right: 10px;">
+              <label for="checkin">From :-</label>
+              <input type="date" class="form-control" name="checkin" id="checkin" [(ngModel)]="checkin">
+            </div>
+            <div>
+              <label for="checkout">To:-</label>
+              <input type="date" class="form-control" name="checkout" id="checkout" [(ngModel)]="checkout">
+            </div>
+          </div>
+          <div class="Addform">
+            <label for="type">Room Type: </label>
+            <select id="type" class="form-control" name="type" [(ngModel)]="roomtype" required>
+              <option></option>
+              <option *ngFor="let rt of roomtypes">{{rt.name}}</option>
+            </select>
+          </div>
+          <div class="Addform">
+            <label for="customer">Customer: </label>
+            <select id="customer" class="form-control" name="customer" [(ngModel)]="customer" required>
+              <option></option>
+              <option *ngFor="let c of customers">{{c.fname}} {{c.lname}}</option>
+            </select>
+          </div>
+          <button class="btn addbutton" (click)="SetUpReport()">Export</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container" style="margin: 5% auto;">
+  <div class="row">
+    <div class="col-md-12">
+      <form #form="ngForm">
+        <div class="card-body">
+          <h3>Employee</h3>
+          <div class="Addform">
+            <label for="type">Room Type: </label>
+            <select id="type" class="form-control" name="type" [(ngModel)]="month" required>
+              <option></option>
+              <option *ngFor="let m of mS">{{m}}</option>
+            </select>
+          </div>
+          <button class="btn addbutton" (click)="SetEmployeeReport()">Export</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

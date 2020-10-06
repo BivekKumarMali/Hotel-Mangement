@@ -1,0 +1,127 @@
+<div class="home shadow p-3 mb-5 bg-white rounded">
+  <div class="">
+    <div class="container header">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="">
+            <i class="fas fa-columns title">
+              Employee List</i>
+            <a class="float-right add" (click)="Reset()"><i class="fas fa-plus">Add New</i></a>
+          </div>
+          <div>
+            <div class="Customform">
+              <input placeholder="Search" (ngModelChange)="search($event)" ngModel class="form-control search">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row home">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Status</th>
+              <th scope="col">Role</th>
+              <th scope="col">Joning</th>
+              <th scope="col">Wages</th>
+              <th scope="col">Paid</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let e of FilterEmployee;  index as i">
+              <th scope="row">{{i+1}}</th>
+              <td>{{e.name}}</td>
+              <td>{{e.mobile}}</td>
+              <td>{{e.status}}</td>
+              <td>{{e.role}}</td>
+              <td>{{e.joining}}</td>
+              <td>{{e.remarks}}</td>
+              <td><input *ngIf="e.role !== 'Owner'" type="checkbox" [checked]="(e.paid === '1')"
+                  [disabled]="(date === 1) || (e.paid === '1')" (change)="paid(e.eid)">
+              </td>
+              <td>
+                <button class="btn btn-edit" (click)="Edit(e)"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-delete" *ngIf="e.role !== 'Owner'" (click)="DeleteEmployeeType(e.eid,e.name)"><i
+                    class="fas fa-trash-alt"></i></button>
+
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="FormOverlay" [ngClass]="active">
+  <div class="container ElementForm shadow p-3 mb-5 bg-white rounded">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="">
+          <div class="header title">
+            <i class="fas fa-edit"> {{pagetitle}} Employee</i>
+            <a class="float-right up" (click)="formdisplay()"><i class="fas fa-times"></i></a>
+            <div class="Editform">
+              <p>{{pagetitle}} Employee Information</p>
+              <hr>
+              <form #form="ngForm" (ngSubmit)="saveEmployee()" ngNativeValidate>
+                <div class="Addform ">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" name="name" placeholder="Name" id="name" required
+                    [(ngModel)]="Employee.name">
+                </div>
+                <div class="Addform ">
+                  <label for="role">Role</label>
+                  <select id="role" class="form-control" name="role" required [(ngModel)]="Employee.role">
+                    <option></option>
+                    <option *ngFor="let role of roles">{{role}}</option>
+                  </select>
+                </div>
+                <div class="Addform ">
+                  <label for="Mobile">Mobile</label>
+                  <input type="number" class="form-control" name="Mobile" placeholder="Mobile" id="Mobile" required
+                    [(ngModel)]="Employee.mobile">
+                </div>
+                <div class="Addform ">
+                  <label for="name">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Email" id="email" required
+                    [(ngModel)]="Employee.mail">
+                  <label for="password">Password</label>
+                  <input type="text" class="form-control" name="password" placeholder="Password" id="password" required
+                    [(ngModel)]="Employee.password">
+                </div>
+                <div class="Addform">
+                  <label for="date">Joining Date</label>
+                  <input type="date" class="form-control" name="date" id="date" required [(ngModel)]="Employee.joining">
+                  <label for="status">Status</label>
+                  <select id="status" class="form-control" name="status" required [(ngModel)]="Employee.status">
+                    <option *ngFor="let st of status">{{st}}</option>
+                  </select>
+                </div>
+                <div class="Addform ">
+                  <label for="remark">Wages</label>
+                  <input type="text" class="form-control" name="remark" id="remark" [(ngModel)]="Employee.remarks">
+                  <div class="buttonform">
+                    <button type="submit" class="btn addbutton">{{pagetitle}}</button>
+                    <button type="reset" class="btn cancelbutton" (click)="formdisplay()">Cancel</button>
+
+                  </div>
+                </div>
+
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

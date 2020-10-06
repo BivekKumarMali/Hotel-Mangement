@@ -1,0 +1,43 @@
+label {
+    color: black;
+    font-size: 15px;
+}
+
+.Addform {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.Addform label {
+    margin-left: 10%;
+}
+
+.Addform input {
+    width: 50%;
+}
+
+td button {
+    margin-left: 20px;
+}
+
+.btn-edit {
+    background-color: #26c6d0;
+    color: white;
+}
+
+td button:hover {
+    color: black;
+    border: black;
+    outline: black;
+}
+
+.btn-delete {
+    background-color: #e8505b;
+    color: white;
+}
+
+.search {
+    margin-top: 25px;
+    max-width: 30%;
+}

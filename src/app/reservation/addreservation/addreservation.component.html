@@ -1,0 +1,244 @@
+<div class="contanier">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ElementForm">
+        <div class="header title">
+          <i class="fas fa-edit"> {{pagetitle}} Reservation</i>
+          <div class="Editform">
+            <hr>
+            <form #form="ngForm" ngNativeValidate ngSubmit>
+              <div class="card-body">
+                <div class="wizard">
+                  <a [ngStyle]="{'background-color': (active === 1)? '#e8505b' : '#26c6d0'}" (click)="Reset()">Arrival
+                    Day</a>
+                  <a [ngStyle]="{'background-color': (active === 2)? '#e8505b' : '#26c6d0'}" (click)="active=2">Select
+                    Room</a>
+                  <a [ngStyle]="{'background-color': (active === 3)? '#e8505b' : '#26c6d0'}"
+                    (click)="active=3">Customer</a>
+                  <a [ngStyle]="{'background-color': (active === 4)? '#e8505b' : '#26c6d0'}"
+                    (click)="active=4">Payment</a>
+                  <a [ngStyle]="{'background-color': (active === 5)? '#e8505b' : '#26c6d0'}"
+                    (click)="active=5">Confirmation</a>
+                </div>
+                <div *ngIf="active === 1">
+                  <div class="Addform">
+                    <label for="checkin">Check In :-</label>
+                    <input type="date" class="form-control" name="checkin" id="name"
+                      (change)="OnChange(reservation.type)" required [(ngModel)]="reservation.checkin">
+                  </div>
+                  <div class="Addform">
+                    <label for="checkout">Check Out :-</label>
+                    <input type="date" class="form-control" name="checkout" id="name"
+                      (change)="OnChange(reservation.type)" required [(ngModel)]="reservation.checkout">
+                  </div>
+                </div>
+                <div *ngIf="active === 2">
+                  <div class="Addform">
+                    <label for="type">Room Type :-</label>
+                    <select id="type" class="form-control" name="type" [(ngModel)]="reservation.type"
+                      (ngModelChange)="OnChange($event)" required>
+                      <option></option>
+                      <option *ngFor="let rt of roomtypes">{{rt.name}}</option>
+                    </select>
+                  </div>
+                  <div class="Addform">
+                    <label for="no">Room No :-</label>
+                    <select id="no" class="form-control" name="no" required [(ngModel)]="reservation.roomno">
+                      <option></option>
+                      <option *ngFor="let r of FilterRooms">{{r.room_no}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div *ngIf="active === 3">
+                  <div class="Addform">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="number" class="form-control short" name="mobile" placeholder="Mobile Number"
+                      id="mobile" [(ngModel)]="customer.mobile">
+                    <button class="btn button" (click)="formdisplay()" *ngIf="!this.customer.cid">Search</button>
+
+                    <button class="btn button" (click)="resetCustomer()" *ngIf="this.customer.cid">Reset</button>
+                  </div>
+                  <div class="Addform">
+                    <label for="fname">FirstName</label>
+                    <input type="text" class="form-control short" name="fname" placeholder="First Name" id="fname"
+                      [(ngModel)]="customer.fname">
+                    <label for="lname">LastName</label>
+                    <input type="text" class="form-control short" name="lname" placeholder="Last Name" id="lname"
+                      [(ngModel)]="customer.lname">
+                  </div>
+                  <div class="Addform col-xs-2">
+                    <label for="bname">Business Name</label>
+                    <input type="text" class="form-control medium" name="bname" placeholder="Buiness Name" id="bname"
+                      [(ngModel)]="customer.bname">
+                  </div>
+                  <div class="Addform">
+                    <label for="Phone">Phone Number</label>
+                    <input type="number" class="form-control short" name="Phone" placeholder="Phone Number" id="Phone"
+                      [(ngModel)]="customer.phone">
+                  </div>
+                  <div class="Addform">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control medium" name="email" placeholder="Email Id" id="email"
+                      [(ngModel)]="customer.email">
+                  </div>
+                  <div class="Addform">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control medium" name="country" placeholder="Country" id="country"
+                      [(ngModel)]="customer.country">
+                  </div>
+                  <div class="Addform">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control short" name="state" placeholder="State" id="state"
+                      [(ngModel)]="customer.state">
+                    <label for="Zip">Zip</label>
+                    <input type="number" class="form-control short" name="zip" placeholder="Zip Code" id="Zip"
+                      [(ngModel)]="customer.zip">
+                  </div>
+                  <div class="Addform">
+                    <label for="car">Car Plate No</label>
+                    <input type="text" class="form-control short" name="car" placeholder="Car Plate No" id="car"
+                      [(ngModel)]="customer.car">
+                  </div>
+                  <div class="Addform">
+                    <label for="address">Address :-</label>
+                    <textarea name="address" id="address" cols="30" rows="2" [(ngModel)]="customer.address"></textarea>
+                  </div>
+                </div>
+                <div *ngIf="active === 4">
+                  <div class="Addform">
+                    <p class="right">Total Amount = <b>{{reservation.cost}}</b></p>
+                  </div>
+                  <div class="Addform">
+                    <label for="payment">Payment Method :-</label>
+                    <select id="payment" class="form-control" name="payment" [(ngModel)]="reservation.payment" required>
+                      <option></option>
+                      <option *ngFor="let p of payment">{{p}}</option>
+                    </select>
+                  </div>
+                  <div class="Addform ">
+                    <label for="deposit ">Deposit :-</label>
+                    <input type="number " class="form-control " name="deposit " id="deposit "
+                      (change)="CalculateDiscount()" [(ngModel)]="reservation.deposit " required>
+                  </div>
+                  <div class="Addform">
+                    <label for="payment">Another Payment Method :-</label>
+                    <select id="payment" class="form-control" name="payment" [(ngModel)]="reservation.payment1"
+                      required>
+                      <option></option>
+                      <option *ngFor="let p of payment">{{p}}</option>
+                    </select>
+                  </div>
+                  <div class="Addform ">
+                    <label for="deposit ">Another Deposit :-</label>
+                    <input type="number " class="form-control " name="deposit " id="deposit "
+                      (change)="CalculateDiscount()" [(ngModel)]="reservation.deposit1" required>
+                  </div>
+                  <div class="Addform ">
+                    <p class="right ">Total Due amount = <b>{{reservation.due }}</b></p>
+                  </div>
+                  <div class="Addform ">
+                    <label for="comment ">Comment:-</label>
+                    <textarea type="text " class="form-control " name="comment " id="comment "
+                      [(ngModel)]="reservation.comment " required></textarea>
+                  </div>
+                </div>
+                <div *ngIf="active === 5">
+                  <div class="ro">
+                    <div class="column">
+
+                      <p>Check In = {{reservation.checkin}}<br />
+                        Check Out = {{reservation.checkout}}<br />
+                        Room Type: {{reservation.type}}<br />
+                        RoomNo:{{reservation.roomno}}<br />
+                        Total Amount:-{{reservation.cost}}<br />
+                        PaymentMethod:{{reservation.payment}}<br />
+                        Amount Due:-{{reservation.due}}<br />
+                        Comment:-{{reservation.comment}}</p>
+                    </div>
+                    <div class="column">
+                      <p>
+                        Frist Name :- {{customer.fname}}<br />
+                        Last name :- {{customer.lname}}<br />
+                        Mobile :- {{customer.mobile}}<br />
+                        Address :- {{customer.address}}<br />
+                        Car Plate :- {{customer.car}}<br />
+                        Phone :- {{customer.phone}}<br />
+                        <br />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="float-right ">
+                  <button type="reset " class="btn cancelbutton " [routerLink]="['/reservations']">Cancel</button>
+                  <button type="reset " class="btn cancelbutton " *ngIf="active !==1 "
+                    (click)='perviousStep()'>Pervious</button>
+                  <button type="button " class="btn addbutton " *ngIf="active !==5 " (click)='nextStep()'>Next</button>
+                  <button type="button " class="btn addbutton " *ngIf="active===5 "
+                    (click)="SetReservation()">{{pagetitle}}</button>
+                </div>
+
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="FormOverlay" [ngClass]="overlay">
+  <div class="container shadow p-3 mb-5 bg-white rounded">
+    <div class="">
+      <div class="header">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="">
+              <i class="fas fa-columns title">
+                Room Category List</i>
+              <a class="float-right" (click)="formdisplay()"><i class="fas fa-times"></i></a>
+            </div>
+            <div>
+              <div class="Addform">
+                <input type="text" placeholder="Search" (ngModelChange)="search($event)" ngModel
+                  class="form-control search">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row home">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">email</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of FilterCustomers;  index as i">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{c.fname}}</td>
+                  <td>{{c.lname}}</td>
+                  <td>{{c.mobile}}</td>
+                  <td>{{c.email}}</td>
+                  <td>
+                    <button class="btn btn-edit" (click)="SetCustomer(c)"><i class="fas fa-plus"></i></button>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

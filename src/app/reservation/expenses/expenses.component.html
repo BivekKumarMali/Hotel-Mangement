@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="setup">
+    <h1>Expenses</h1>
+    <div id="Addform" style="width: 500px;">
+      <div class="row">
+        <div class="column" style="width: 200px;">
+          <h2>{{reservation.customer.fname}}{{reservation.customer.lname}}</h2>
+          <h6 *ngIf="reservation.type">Room Type</h6>
+          <h6 *ngIf="reservation.roomno">Room No</h6>
+          <h6 *ngIf="reservation.checkin">Check In</h6>
+          <h6 *ngIf="reservation.checkout">Check Out</h6>
+          <h6 *ngIf="reservation.payment">Payment Method 1</h6>
+          <h6 *ngIf="reservation.deposit">Deposited</h6>
+          <h6 *ngIf="reservation.payment1">Payment Method 2</h6>
+          <h6 *ngIf="reservation.deposit1">Deposited</h6>
+          <h6 *ngIf="reservation.days">Number of days </h6>
+          <h6 *ngIf="reservation.cost">Room Rent per day {{reservation.cost}}</h6>
+          <h6 *ngFor="let r of Details">{{r}}</h6>
+          <h6 *ngIf="totalExpenses">Total Expenses</h6>
+          <h6 *ngIf="totalDeposited">Total Deposited</h6>
+          <hr>
+          <h6 style="color: red;">Due</h6>
+        </div>
+        <div class=" column">
+          <h2>..</h2>
+          <h6 *ngIf="reservation.type">{{reservation.type}}</h6>
+          <h6 *ngIf="reservation.roomno">{{reservation.roomno}}</h6>
+          <h6 *ngIf="reservation.checkin">{{reservation.checkin}}</h6>
+          <h6 *ngIf="reservation.checkout">{{reservation.checkout}}</h6>
+          <h6 *ngIf="reservation.payment">{{reservation.payment}}</h6>
+          <h6 *ngIf="reservation.deposit">{{reservation.deposit}}</h6>
+          <h6 *ngIf="reservation.payment1">{{reservation.payment1}}</h6>
+          <h6 *ngIf="reservation.deposit1">{{reservation.deposit1}}</h6>
+          <h6 *ngIf="reservation.days">{{reservation.days}}</h6>
+          <h6 *ngIf="reservation.cost">{{reservation.cost}}</h6>
+          <h6 *ngFor="let r of totalCosts">{{r}}</h6>
+          <h6 *ngIf="totalExpenses">{{totalExpenses}}</h6>
+          <h6 *ngIf="totalDeposited">{{totalDeposited}}</h6>
+          <hr>
+          <h6 style="color: red;">{{ this.due}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,84 @@
+<div class="home shadow p-3 mb-5 bg-white rounded">
+  <div class="">
+    <div class="container header">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="">
+            <i class="fas fa-columns title">
+              Reservation List</i>
+            <a class="float-right add" [routerLink]="[0, 'edit']"><i class="fas fa-plus">Add New</i></a>
+          </div>
+          <div>
+            <div class="Customform">
+              <input placeholder="Search" (ngModelChange)="search($event)" ngModel class="form-control search">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row home">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Room No</th>
+              <th scope="col">Check In</th>
+              <th scope="col">Check Out</th>
+              <th scope="col">Payment Method1</th>
+              <th scope="col">Deposit1</th>
+              <th scope="col">Payment Method2</th>
+              <th scope="col">Deposit2</th>
+              <th scope="col">Total Cost</th>
+              <th scope="col">Due</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let r of FilterReservation;  index as i">
+            <tr>
+              <th scope="row">{{i+1}}</th>
+              <td>{{r.name}}</td>
+              <td>{{r.roomno}}</td>
+              <td>{{r.checkin}}</td>
+              <td>{{r.checkout}}</td>
+              <td>{{r.payment}}</td>
+              <td>{{r.deposit}}</td>
+              <td>{{r.payment1}}</td>
+              <td>{{r.deposit1}}</td>
+              <td>{{r.cost}}</td>
+              <td>{{r.due}}</td>
+              <td>
+
+                <button class="btn btn-edit" [routerLink]="['/reservations',r.bid, 'edit']"><i
+                    class="fas fa-edit"></i></button>
+                <button class="btn btn-delete"><i class="fas fa-plus" (click)="r.show=r.show?false:true"></i></button>
+                <button class="btn btn-edit" [routerLink]="['/reservations',r.bid, 'expenses']">Out</button>
+                <button class="btn btn-delete" style="background-color: red;"
+                  (click)="DeleteReservation(r.bid,r.name)"><i class="fas fa-trash-alt"></i></button>
+              </td>
+            </tr>
+            <tr *ngIf="r.show" [hidden]='!r.show'>
+              <td colspan="12">
+                <div>
+                  <p *ngFor="let extra of r.Extra">{{extra}}</p>
+                </div>
+                <form #form="ngForm" ngNativeValidate ngSubmit>
+                  <div class="Addform">
+                    <input type="text" class="form-control short" name="foodname" id="foodname" placeholder="Details"
+                      [(ngModel)]="Foodname">
+                    <input type="cost" class="form-control short" name="cost" id="cost" placeholder="Cost"
+                      [(ngModel)]="Foodcost">
+                    <button type="submit" class="btn btn-edit" (click)="AddExtra(r)">Add</button>
+                  </div>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

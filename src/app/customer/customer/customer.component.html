@@ -1,0 +1,55 @@
+<div class="home shadow p-3 mb-5 bg-white rounded">
+  <div class="container">
+    <div class="container header">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="">
+            <i class="fas fa-columns title">
+              Customer List</i>
+            <a class="float-right add" [routerLink]="[0, 'edit']"><i class="fas fa-plus">Add New</i></a>
+          </div>
+          <div>
+            <div class="Customform">
+              <input type="text" placeholder="Search" (ngModelChange)="search($event)" ngModel
+                class="form-control search">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row home">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Email</th>
+              <th scope="col">Paid</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of FilterCustomers;  index as i">
+              <th scope="row">{{i+1}}</th>
+              <td>{{c.fname}}</td>
+              <td>{{c.lname}}</td>
+              <td>{{c.mobile}}</td>
+              <td>{{c.email}}</td>
+              <td>
+                <button class="btn btn-edit" [routerLink]="[c.cid, 'edit']"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-delete" (click)="DeleteCustomer(c.cid,c.fname)"><i
+                    class="fas fa-trash-alt"></i></button>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

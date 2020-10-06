@@ -1,0 +1,104 @@
+<div class="home shadow p-3 mb-5 bg-white rounded">
+  <div class="">
+    <div class="container header">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="">
+            <i class="fas fa-columns title">
+              Room Category List</i>
+            <a class="float-right add" (click)="Reset()"><i class="fas fa-plus">Add New</i></a>
+          </div>
+          <div>
+            <div class="Customform">
+              <input placeholder="Search" (ngModelChange)="search($event)" ngModel class="form-control search">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row home">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Room Category</th>
+              <th scope="col">Taxes %</th>
+              <th scope="col">Room Rent(Including Tax)</th>
+              <th scope="col">No of Peoples</th>
+              <th scope="col">Action</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of FilterRoomTypes;  index as i">
+              <th scope="row">{{i+1}}</th>
+              <td>{{r.name}}</td>
+              <td>{{r.tax}}%</td>
+              <td>{{r.rent}}$</td>
+              <td>{{r.nop}}</td>
+              <td>
+                <button class="btn btn-edit" (click)="Edit(r)"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-delete" (click)="DeleteRoomType(r.rtid,r.name)"><i
+                    class="fas fa-trash-alt"></i></button>
+
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="FormOverlay" [ngClass]="active">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="ElementForm shadow p-3 mb-5 bg-white rounded">
+          <div class="header title">
+            <i class="fas fa-edit"> {{pagetitle}} Room Category</i>
+            <a class="float-right up" (click)="formdisplay()"><i class="fas fa-times"></i></a>
+            <div class="Editform">
+              <p>{{pagetitle}} Room Information</p>
+              <hr>
+              <form #form="ngForm" (ngSubmit)="saveRoomtype()" ngNativeValidate>
+                <div class="Addform ">
+                  <label for="name">Room Category :-</label>
+                  <input type="text" class="form-control" name="name" placeholder="Enter Room Type" id="name" required
+                    [(ngModel)]="roomtype.name">
+                </div>
+                <div class="Addform">
+                  <label for="rent">Rent :-</label>
+                  <input type="number" class="form-control" name="rent" placeholder="Rent" id="rent" required
+                    [(ngModel)]="roomtype.exrent">
+                </div>
+                <div class="Addform">
+                  <label for="tax">Tax %:-</label>
+                  <input type="number" class="form-control" name="tax" placeholder="Tax(%)" id="tax" required
+                    [(ngModel)]="roomtype.tax">
+                </div>
+                <div class="Addform">
+                  <label for="nop">No of Peoples :-</label>
+                  <input type="number" class="form-control" name="nop" placeholder="No of People" id="nop" required
+                    [(ngModel)]="roomtype.nop">
+                </div>
+                <div class="Addform">
+                  <p>Total Rent including Taxes =
+                    {{this.roomtype.rent}}</p>
+
+                  <button type="submit" class="btn addbutton">{{pagetitle}}</button>
+                  <button type="reset" class="btn cancelbutton" (click)="formdisplay()">Cancel</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

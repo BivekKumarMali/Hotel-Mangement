@@ -1,0 +1,100 @@
+<div class="home shadow p-3 mb-5 bg-white rounded">
+    <div class="">
+        <div class="container header">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="">
+                        <i class="fas fa-columns title">
+                            Room List</i>
+                        <a class="float-right add" (click)="Reset()"><i class="fas fa-plus">Add New</i></a>
+                    </div>
+                    <div>
+                        <div class="Customform">
+                            <input placeholder="Search" (ngModelChange)="search($event)" ngModel
+                                class="form-control search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row home">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Room No</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let r of FilterRoom;  index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{r.room_no}}</td>
+                            <td>{{r.type}}</td>
+                            <td>{{r.status}}</td>
+                            <td>
+                                <button class="btn btn-edit" (click)="Edit(r)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-delete" (click)="DeleteRoomType(r.rid,r.room_no)"><i
+                                        class="fas fa-trash-alt"></i></button>
+
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="FormOverlay" [ngClass]="active">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ElementForm shadow p-3 mb-5 bg-white rounded">
+                    <div class="header title">
+                        <i class="fas fa-edit"> {{pagetitle}} Room</i>
+                        <a class="float-right up" (click)="formdisplay()"><i class="fas fa-times"></i></a>
+                        <div class="Editform">
+                            <p>{{pagetitle}} Room Information</p>
+                            <hr>
+                            <form #form="ngForm" (ngSubmit)="saveRoom()" ngNativeValidate>
+                                <div class="Addform ">
+                                    <label for="roomno">Room No :-</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Enter Room No"
+                                        id="name" required [(ngModel)]="room.room_no">
+                                </div>
+                                <div class="Addform">
+                                    <label for="status">Status :-</label>
+                                    <select id="status" class="form-control" name="status" required
+                                        [(ngModel)]="room.status">
+                                        <option *ngFor="let st of status">{{st}}</option>
+                                    </select>
+                                </div>
+                                <div class="Addform">
+                                    <label for="type">Room Type :-</label>
+                                    <select id="type" class="form-control" name="type" required [(ngModel)]="room.type">
+                                        <option></option>
+                                        <option *ngFor="let rt of roomtype">{{rt.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="buttonform">
+                                    <button type="reset" class="btn cancelbutton"
+                                        (click)="formdisplay()">Cancel</button>
+
+                                    <button type="submit" class="btn addbutton">{{pagetitle}}</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

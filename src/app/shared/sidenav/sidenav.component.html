@@ -1,0 +1,29 @@
+<nav *ngIf="name">
+  <div class="navup">
+    <div class="logs">
+      <div class="hamburger" (click)="toggle()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      <button class="float-right" (click)="Logout()">Log Out <i class="fas fa-sign-out-alt"></i></button>
+      <a href="#" class="logo">Hotel Mangement</a>
+      <h1 class="float-right" style="margin: 8px 5px 0px 0;">Hi! {{name}}</h1>
+    </div>
+  </div>
+  <ul class="navlinks" [ngClass]="sidenav" (click)="toggle()">
+    <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+    <li><a [routerLink]="['/reservations']">Reservation</a></li>
+    <li><a [routerLink]="['/customers']">Customer</a></li>
+    <li><a [routerLink]="['/roomtypes']">RoomType</a></li>
+    <li><a [routerLink]="['/rooms']">Rooms</a></li>
+    <li><a [routerLink]="['/advanced-calendra']">Advanced Calendra</a></li>
+    <li><a [routerLink]="['/report']">Report</a></li>
+    <li><a [routerLink]="['/employee']">Employee</a></li>
+    <li><a [routerLink]="['/record']">History</a></li>
+    <li><a [routerLink]="['/invoice']">Print Invoice</a></li>
+  </ul>
+  <div class="overlay" [ngClass]="sidenav" (click)="toggle()"></div>
+</nav>

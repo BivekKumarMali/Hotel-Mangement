@@ -1,0 +1,160 @@
+<div class="home shadow p-3 mb-5 bg-white rounded">
+  <div class="container">
+    <div class="container header">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="">
+            <i class="fas fa-columns title"> History</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row home">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Employer Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Action</th>
+              <th scope="col">Section</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let r of records;  index as i">
+            <tr>
+              <th scope="row">{{i+1}}</th>
+              <td>{{r.name}}</td>
+              <td>{{r.date}}</td>
+              <td>{{r.time}}</td>
+              <td>{{r.action}}</td>
+              <td>{{r.section}}</td>
+              <td>
+                <button class="btn btn-edit float-right" (click)="r.show = r.show? false:true "><i
+                    class="fas fa-eye"></i></button>
+              </td>
+            </tr>
+            <tr *ngIf="((r.section === 'Room'))" [hidden]='!r.show'>
+              <td colspan="5">
+                <div *ngIf="r.action === 'Updated'">
+                  <p>Room No : {{r.room2.room_no}} --> {{r.room.room_no}}</p>
+                  <p> Room Status : {{r.room2.status}} --> {{r.room.status}}</p>
+                  <p>Room Type : {{r.room2.type}} --> {{r.room.type}} </p>
+                </div>
+                <div *ngIf="r.action !== 'Updated'">
+                  <p>Room No : {{r.room.room_no}}</p>
+                  <p> Room Status : {{r.room.status}}</p>
+                  <p>Room Type : {{r.room.type}}</p>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="((r.section === 'Roomtype'))" [hidden]='!r.show'>
+              <td colspan="5">
+                <div *ngIf="r.action === 'Updated'">
+                  <p>Name : {{r.roomtype2.name}} --> {{r.roomtype.name}}</p>
+                  <p> Tax : {{r.roomtype2.tax}} --> {{r.roomtype.tax}}</p>
+                  <p> Rent : {{r.roomtype2.rent}} --> {{r.roomtype.rent}} </p>
+                </div>
+                <div *ngIf="r.action !== 'Updated'">
+                  <p>Name : {{r.roomtype.name}}</p>
+                  <p>Tax : {{r.roomtype.tax}}</p>
+                  <p>Rent : {{r.roomtype.rent}}</p>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="((r.section === 'Employee'))" [hidden]='!r.show'>
+              <td colspan="5">
+                <div *ngIf="r.action === 'Updated'">
+                  <p>Name : {{r.employee2.name}} --> {{r.employee.name}}</p>
+                  <p>Role : {{r.employee2.role}} --> {{r.employee.role}}</p>
+                  <p>Mobile : {{r.employee2.mobile}} --> {{r.employee.mobile}}</p>
+                  <p>Mail : {{r.employee2.mail}} --> {{r.employee.mail}}</p>
+                  <p>Password : {{r.employee2.password}} --> {{r.employee.password}}</p>
+                  <p>Joining : {{r.employee2.joining}} --> {{r.employee.joining}}</p>
+                  <p>Status : {{r.employee2.status}} --> {{r.employee.status}}</p>
+                  <p>Remarks : {{r.employee2.remarks}} --> {{r.employee.remarks}}</p>
+                </div>
+                <div *ngIf="r.action !== 'Updated'">
+                  <p>Name : {{r.employee.name}}</p>
+                  <p>Role : {{r.employee.role}}</p>
+                  <p>Mobile : {{r.employee.mobile}}</p>
+                  <p>Mail : {{r.employee.mail}}</p>
+                  <p>Password : {{r.employee.password}}</p>
+                  <p>Joining : {{r.employee.joining}}</p>
+                  <p>Status : {{r.employee.status}}</p>
+                  <p>Remarks : {{r.employee.remarks}}</p>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="((r.section === 'Customer'))" [hidden]='!r.show'>
+              <td colspan="5">
+                <div *ngIf="r.action === 'Updated'">
+                  <p>Frist Name : {{r.customer2.fname}} --> {{r.customer.fname}}</p>
+                  <p>Last Name : {{r.customer2.lname}} --> {{r.customer.lname}}</p>
+                  <p>State : {{r.customer2.state}} --> {{r.customer.state}}</p>
+                  <p>Country : {{r.customer2.country}} --> {{r.customer.country}}</p>
+                  <p>Zip : {{r.customer2.zip}} --> {{r.customer.zip}}</p>
+                  <p>Phone : {{r.customer2.phone}} --> {{r.customer.phone}}</p>
+                  <p>Email : {{r.customer2.email}} --> {{r.customer.email}}</p>
+                  <p>Mobile : {{r.customer2.mobile}} --> {{r.customer.mobile}}</p>
+                  <p>Car : {{r.customer2.car}} --> {{r.customer.car}}</p>
+                  <p>Address : {{r.customer2.address}} --> {{r.customer.address}}</p>
+                </div>
+                <div *ngIf="r.action !== 'Updated'">
+                  <p>Frist Name : {{r.customer.fname}}</p>
+                  <p>Last Name : {{r.customer.lname}}</p>
+                  <p>State : {{r.customer.state}}</p>
+                  <p>Country : {{r.customer.country}}</p>
+                  <p>Zip : {{r.customer.zip}}</p>
+                  <p>Phone : {{r.customer.phone}}</p>
+                  <p>Mobile : {{r.customer.mobile}}</p>
+                  <p>Car : {{r.customer.car}}</p>
+                  <p>Email : {{r.customer.email}}</p>
+                  <p>Address : {{r.customer.address}}</p>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="((r.section === 'Reservation'))" [hidden]='!r.show'>
+              <td colspan="5">
+                <div *ngIf="r.action === 'Updated'">
+
+                  <p>Check In : {{r.reservation2.checkin}} --> {{r.reservation.checkin}}</p>
+                  <p>Check Out : {{r.reservation2.checkout}} --> {{r.reservation.checkout}}</p>
+                  <p>Frist Name : {{r.reservation2.customer.fname}} -->
+                    {{r.reservation.customer.fname}}</p>
+                  <p>Last Name : {{r.reservation2.customer.lname}} -->
+                    {{r.reservation.customer.lname}}</p>
+                  <p>Mobile : {{r.reservation2.customer.mobile}} --> {{r.reservation.customer.mobile}}
+                  </p>
+                  <p>Car : {{r.reservation2.customer.car}} --> {{r.reservation.customer.car}}</p>
+                  <p>Payment : {{r.reservation2.payment}} --> {{r.reservation.payment}}</p>
+                  <p>Deposit : {{r.reservation2.deposit}} --> {{r.reservation.deposit}}</p>
+                  <p>Due : {{r.reservation2.due}} --> {{r.reservation.due}}</p>
+                  <p>Status : {{r.reservation2.status}} --> {{r.reservation.status}}</p>
+                  <p>Extra : {{r.reservation2.extra}} --> {{r.reservation.extra}}</p>
+                </div>
+                <div *ngIf="r.action !== 'Updated'">
+                  <p>Check In : {{r.reservation.checkin}}</p>
+                  <p>Check Out : {{r.reservation.checkout}}</p>
+                  <p>Frist Name : {{r.reservation.customer.fname}}</p>
+                  <p>Last Name : {{r.reservation.customer.lname}}</p>
+                  <p>Mobile : {{r.reservation.customer.mobile}}</p>
+                  <p>Car : {{r.reservation.customer.car}}</p>
+                  <p>Payment : {{r.reservation.payment}}</p>
+                  <p>Deposit : {{r.reservation.deposit}}</p>
+                  <p>Due : {{r.reservation.due}}</p>
+                  <p>Status : {{r.reservation.status}}</p>
+
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

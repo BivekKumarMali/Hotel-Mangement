@@ -1,0 +1,72 @@
+.context {
+  top: 10%;
+  right: 50%;
+  transform: translate(80%, 10%);
+  width: 400px;
+  padding: 30px;
+  background-color: white;
+  flex-direction: column;
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+  font-family: sans-serif;
+  border-radius: 25px;
+  box-shadow: grey;
+  -webkit-box-shadow: 11px 14px 89px -28px rgba(56, 56, 56, 1);
+  -moz-box-shadow: 11px 14px 89px -28px rgba(56, 56, 56, 1);
+  box-shadow: 11px 14px 89px -28px rgba(56, 56, 56, 1);
+  z-index: 2;
+  transition: all 0.75s ease;
+}
+
+img {
+  width: 100%;
+}
+.Addform {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.Addform label {
+  margin-left: 10%;
+  color: black;
+  font-size: 17px;
+  width: 100px;
+  font-weight: 700;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.addbutton {
+  margin-top: 20px;
+  height: 40px;
+  background-color: #26c6d0;
+  color: white;
+  margin-right: 50%;
+  transform: translate(50%, 0%);
+}
+
+.cancelbutton {
+  margin-top: 20px;
+  height: 40px;
+  background-color: #e8505b;
+  color: white;
+}
+
+textarea {
+  font-size: 15px;
+  font-family: cambria;
+}
+.header {
+  width: 100%;
+}
+.ElementForm {
+  height: 300% !important;
+}

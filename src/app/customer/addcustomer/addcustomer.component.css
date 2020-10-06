@@ -1,0 +1,56 @@
+.Addform {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.Addform label {
+    margin-left: 10%;
+    color: black;
+    font-size: 17px;
+    width: 100px;
+}
+
+.Addform .short {
+    width: 25%;
+}
+.Addform .medium{
+    width: 30%;
+}
+.Addform input{
+    margin-left: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.addbutton {
+    margin-top: 20px;
+    height: 40px;
+    background-color: #26c6d0;
+    color: white;
+}
+
+.cancelbutton {
+    margin-top: 20px;
+    height: 40px;
+    background-color: #e8505b;
+    color: white;
+}
+
+textarea {
+    font-size: 15px;
+    font-family: cambria;
+}
+.header{
+    width: 100%;
+}
+.ElementForm{
+    height: 300% !important;
+}

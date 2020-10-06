@@ -1,6 +1,6 @@
 # Finalapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+Augular Curd contain the php file which allow the connection with Database
 
 ## Development server
 
